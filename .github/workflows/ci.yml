@@ -15,7 +15,7 @@ on:
 jobs:
   coverage:
     name: 'Coverage'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     needs:
       - main
       - bun
@@ -34,7 +34,7 @@ jobs:
 
   main:
     name: 'Main'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -56,7 +56,7 @@ jobs:
 
   jsr-dry-run:
     name: "Checking if it's valid for JSR"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v4
       - uses: denoland/setup-deno@v2
@@ -69,7 +69,7 @@ jobs:
 
   deno:
     name: 'Deno'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v4
       - uses: denoland/setup-deno@v2
@@ -87,7 +87,7 @@ jobs:
 
   bun:
     name: 'Bun'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
@@ -112,7 +112,7 @@ jobs:
 
   fastly:
     name: 'Fastly Compute'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
@@ -124,7 +124,7 @@ jobs:
 
   node:
     name: 'Node.js v${{ matrix.node }}'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     strategy:
       matrix:
         node: ['18.18.2', '20.x', '22.x']
@@ -142,7 +142,7 @@ jobs:
 
   workerd:
     name: 'workerd'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -157,7 +157,7 @@ jobs:
 
   lambda:
     name: 'AWS Lambda'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
@@ -169,7 +169,7 @@ jobs:
 
   lambda-edge:
     name: 'Lambda@Edge'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
@@ -181,7 +181,7 @@ jobs:
 
   perf-measures-check-on-pr:
     name: 'Type & Bundle size Check on PR'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     if: github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v4
@@ -191,7 +191,7 @@ jobs:
 
   http-benchmark-on-pr:
     name: 'HTTP Speed Check on PR'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     if: github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v4
@@ -253,7 +253,7 @@ jobs:
 
   perf-measures-check-on-main:
     name: 'Type & Bundle size Check on Main'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
